@@ -1,0 +1,2 @@
+import type {MetadataRoute} from 'next';import {calculators} from '@/content/calculators';
+export default function sitemap():MetadataRoute.Sitemap{const base=process.env.NEXT_PUBLIC_SITE_URL||'https://investmentcalculatortoolkit.com';return['',...calculators.map(c=>`/${c.slug}`)].map(path=>({url:`${base}${path}`,lastModified:new Date(),changeFrequency:path?'monthly':'weekly',priority:path?.includes('calculator')?.8:1}))}
